@@ -3,7 +3,13 @@
 
 	Array.prototype.even = function(){
 		setTimeout(() => {
-			
+			console.log(this.filter((item) => item%2 == 0));
+		},0);
+	};
+
+	Array.prototype.odd = function(){
+		setTimeout(() => {
+			console.log(this.filter((item) => item%2 > 0));
 		},0);
 	};
 
