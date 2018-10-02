@@ -44,7 +44,7 @@
 	Array.prototype.removeDupsObservable = function(){
 		const { from } = rxjs;
 		const { distinct, reduce } = rxjs.operators;
-		from(x)
+		from(this)
 			.pipe(
 				distinct(),
 				reduce(
