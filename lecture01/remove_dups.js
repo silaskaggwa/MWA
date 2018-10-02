@@ -1,65 +1,65 @@
 (function(){
 	'use strict';
 
-	console.log("hello >>");
+	console.log("LESSON01 >>");
 
 	let x = [4,1,5,7,2,3,1,4,6,5,2];
-	console.time('removeDups1');
-	console.log(removeDups1(x));
-	console.timeEnd('removeDups1');
-
-	console.time('removeDups2');
-	console.log(removeDups2(x));
-	console.timeEnd('removeDups2');
 
 	//using ES6
-	function removeDups1(myArray){
-		return myArray.filter((item, index, arr) => {
+	Array.prototype.removeDups1 = function(){
+		return this.filter((item, index, arr) => {
 			return arr.indexOf(item) == index;
 		});
 	}
 
-	function removeDups2(myArray){
-		return [...new Set(myArray)];
+	Array.prototype.removeDups2 = function(){
+		return [...new Set(this)];
 	}
+
+	console.log("1.1 ", x.removeDups1());
+	console.log("1.2 ", x.removeDups2());
 
 
 	// using promise
-	function removeDupsPromise(myArray){
+	Array.prototype.removeDupsPromise = function (){
 		return new Promise((resolve, reject) => {
-			resolve(removeDups1(myArray));
+			resolve(this.removeDups1());
 		});
 	}
-	removeDupsPromise(x).then(data => console.log(data));
+	x.removeDupsPromise().then(data => console.log("2. ", data));
 
 	// using Async/wait
-	async function removeDupsAsyncWait(myArray){
+	Array.prototype.removeDupsAsyncWait = async function(){
 		try{
-			let filteredArr = await removeDupsPromise(myArray);
-			console.log(filteredArr);
+			let filteredArr = await this.removeDupsPromise();
+			console.log("3. ", filteredArr);
 		}catch(error){
-			console.log(error);
+			console.log("3. ", error);
 		}
 	}
-	removeDupsAsyncWait(x);
-	console.log('Finish');
+	x.removeDupsAsyncWait();
+	console.log('3. ', 'Finish');
 
 	// using observables
-	const { from } = rxjs;
-	const { distinct, reduce } = rxjs.operators;
-	from(x)
-		.pipe(
-			distinct(),
-			reduce(
-				(acc,cur) => {
-					acc.push(cur);
-					return acc;
-				},[]),
-		)
-		.subscribe(
-			itm => console.log(itm),
-			null,
-			() => console.log('Done')
-		)
+	Array.prototype.removeDupsObservable = function(){
+		const { from } = rxjs;
+		const { distinct, reduce } = rxjs.operators;
+		from(x)
+			.pipe(
+				distinct(),
+				reduce(
+					(acc,cur) => {
+						acc.push(cur);
+						return acc;
+					},[]),
+			)
+			.subscribe(
+				data => console.log("4. ", data),
+				null,
+				() => console.log("4. ", 'Done')
+			)
+	}
+	x.removeDupsObservable();
+	
 
 })();

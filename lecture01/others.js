@@ -35,6 +35,6 @@
 	}
 
 	const y = applyCoupon("food")(0.1)(item).price === 1.8;
-	console.log(y); 
+	console.log("applyCoupon", y); 
 
 })();
