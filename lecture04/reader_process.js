@@ -9,7 +9,7 @@ process.on('message', myPath => {
 		process.send(chunk);
 	});
 	readStream.on('error', err => {
-		process.send(err.message);
+		process.send('error');
 	});
 	readStream.on('end', () => {
 		process.send('done');
