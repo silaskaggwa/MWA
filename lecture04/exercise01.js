@@ -11,7 +11,12 @@ server.on('request', (req, res) => {
 	}
 	
 	readerProcess.on('message', data => {
-		res.end(data);
+		if(data == 'done'){
+			console.log("Done>>");
+			res.end();
+		}else{
+			res.write(data);
+		}
 	});
 });
 
