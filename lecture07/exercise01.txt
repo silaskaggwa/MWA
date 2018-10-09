@@ -1,0 +1,22 @@
+Book collection
+[
+	{
+		"_id": "....."
+		"title" : "....",
+		"ISBN": "....",
+		"author": {
+			"name": "...",
+			"email": "..."
+		},
+		"tags": ["tag1","tag2"],
+		"borrowing": [
+			{
+				"_id": "...",
+				"name": "...",
+				"take_date": "...",
+				"expected_return_date": "..."
+				"actual_return_date": "..."
+			}
+		]
+	}
+]
