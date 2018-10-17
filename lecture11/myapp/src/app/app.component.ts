@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-root',
   template: `
     <div>
-      <input value="{{counter}}" (keyup)=setCounter($event.target.value)/>
+      <input [value]="counter" (keyup)="counter=$event.target.value"/>
       <app-counter [counter] = "counter" (counterChange)=onCounter($event)></app-counter>
     </div>
   `,
@@ -18,7 +18,7 @@ export class AppComponent {
     this.counter = $event;
   }
 
-  setCounter($event){
-    this.counter = $event;
-  }
+  // setCounter($event){
+  //   this.counter = $event;
+  // }
 }
