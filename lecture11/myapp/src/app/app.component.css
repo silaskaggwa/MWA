@@ -1,0 +1,9 @@
+div {
+    border: 2px solid green; 
+    padding: 20px; 
+    position: relative; 
+    overflow: auto; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
